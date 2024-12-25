@@ -1,0 +1,33 @@
+# See https://help.github.com/en/articles/ignoring-files#create-a-gitignore-file
+# for more information on how to write a .gitignore file
+
+# dependencies
+/node_modules/
+/public/lib/
+.next/
+.vercel/
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# build
+/build/
+
+# cache
+.cache/
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+.vercel
+.next/
+.next/static/Chunks/
+
+# testing
+/coverage/
+/jest/
