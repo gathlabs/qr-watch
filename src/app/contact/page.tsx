@@ -12,7 +12,6 @@ export default function ContactPage() {
             Get in touch with our dedicated support team
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gold-400/20">
@@ -22,14 +21,14 @@ export default function ContactPage() {
                   <FaPhone className="w-6 h-6 text-gold-400 mr-4" />
                   <div>
                     <p className="text-white font-montserrat">Phone</p>
-                    <p className="text-gray-400 font-montserrat">+1 (888) CRYPTO-WATCH</p>
+                    <p className="text-gray-400 font-montserrat">+62 (021) CRYPTO-WATCH</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <FaEnvelope className="w-6 h-6 text-gold-400 mr-4" />
                   <div>
                     <p className="text-white font-montserrat">Email</p>
-                    <p className="text-gray-400 font-montserrat">support@cryptowatch.com</p>
+                    <p className="text-gray-400 font-montserrat">support@cryptowatch.id</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -37,8 +36,10 @@ export default function ContactPage() {
                   <div>
                     <p className="text-white font-montserrat">Address</p>
                     <p className="text-gray-400 font-montserrat">
-                      123 Luxury Lane, Silicon Valley<br />
-                      California, USA
+                      CryptoWatch Tower<br />
+                      Jl. Margonda Raya No. 88<br />
+                      Depok, Jawa Barat 16424<br />
+                      Indonesia
                     </p>
                   </div>
                 </div>
@@ -46,10 +47,10 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gold-400/20">
-              <h2 className="text-2xl font-bold text-white mb-6 font-montserrat">Support Hours</h2>
+              <h2 className="text-2xl font-bold text-white mb-6 font-montserrat">Office Hours</h2>
               <div className="space-y-2">
                 <p className="text-gray-400 font-montserrat">Monday - Friday: 24/7</p>
-                <p className="text-gray-400 font-montserrat">Saturday - Sunday: 9:00 AM - 6:00 PM EST</p>
+                <p className="text-gray-400 font-montserrat">Saturday - Sunday: 9:00 AM - 6:00 PM WIB</p>
               </div>
             </div>
           </div>

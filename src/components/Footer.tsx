@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent">
-              LUXWATCH
+              CryptoWatch
             </Link>
             <p className="text-gray-400 font-montserrat">
               Redefining luxury timepieces for the modern era
@@ -89,17 +89,17 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>1234 Luxury Lane</li>
-              <li>Suite 500</li>
-              <li>New York, NY 10001</li>
-              <li>contact@luxwatch.com</li>
-              <li>+1 (555) 123-4567</li>
+              <li>Jl. Raya Margonda No. 123</li>
+              <li>Depok, West Java 16423</li>
+              <li>Indonesia</li>
+              <li>contact@cryptowatch.id</li>
+              <li>+62 812 3456 7890</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} LUXWATCH. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CRYPTOWATCH. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
+import {WatchIcon} from 'lucide-react'
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -16,6 +18,7 @@ export default function Header() {
   ]
 
   const dropdownLinks = [
+    { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
     { name: 'Shipping', href: '/shipping' },
     { name: 'Warranty', href: '/warranty' },
@@ -40,7 +43,8 @@ export default function Header() {
     <header className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gold-400/20">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent font-playfair">
+          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent font-playfair flex items-center">
+            <WatchIcon className="w-6 h-6 mr-2 text-gold-400" />
             CryptoWatch
           </Link>
 

@@ -59,9 +59,6 @@ export default function Hero() {
           <button className="bg-gradient-to-r from-gold-500 to-gold-300 text-black px-8 py-4 rounded-full text-lg font-semibold hover:from-gold-400 hover:to-gold-200 transition-all duration-300 font-montserrat">
             Pre-order Now
           </button>
-          <button className="border-2 border-gold-400 text-gold-400 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gold-400 hover:text-black transition-all duration-300 font-montserrat">
-            Explore Features
-          </button>
         </motion.div>
       </motion.div>
 
