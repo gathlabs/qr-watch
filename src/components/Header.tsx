@@ -1,90 +1,144 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+"use client"
+import { useState } from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  
+  const mainLinks = [
+    { name: 'Features', href: '/#features' },
+    { name: 'Specifications', href: '/#specifications' },
+    { name: 'Gallery', href: '/#gallery' },
+    { name: 'FAQ', href: '/#faq' }
+  ]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const dropdownLinks = [
+    { name: 'Contact', href: '/contact' },
+    { name: 'Shipping', href: '/shipping' },
+    { name: 'Warranty', href: '/warranty' },
+    { name: 'Returns', href: '/returns' }
+  ]
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname !== '/') {
+      return // Let the Link component handle navigation to home page
+    }
+    
+    e.preventDefault()
+    const sectionId = href.split('#')[1]
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      setIsOpen(false)
+    }
+  }
 
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center py-4 md:py-6">
-          <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent">
-              LUXWATCH
-            </Link>
-          </div>
+    <header className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gold-400/20">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent font-playfair">
+            CryptoWatch
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-white hover:text-gold-400 transition-colors">
-              Features
-            </Link>
-            <Link href="/specs" className="text-white hover:text-gold-400 transition-colors">
-              Specs
-            </Link>
-            <Link href="/gallery" className="text-white hover:text-gold-400 transition-colors">
-              Gallery
-            </Link>
-            <Link href="/faq" className="text-white hover:text-gold-400 transition-colors">
-              FAQ
-            </Link>
-            <button className="bg-gradient-to-r from-gold-500 to-gold-300 text-black px-6 py-2 rounded-full font-semibold hover:from-gold-400 hover:to-gold-200 transition-all duration-300">
-              Pre-order Now
-            </button>
-          </nav>
+          <div className="hidden md:flex items-center space-x-8">
+            {mainLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="text-gray-300 hover:text-gold-400 transition-colors font-montserrat"
+              >
+                {link.name}
+              </Link>
+            ))}
+            <div className="relative group">
+              <button className="text-gray-300 hover:text-gold-400 transition-colors font-montserrat">
+                Support
+              </button>
+              <div className="absolute right-0 mt-2 w-48 bg-black border border-gold-400/20 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {dropdownLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="block px-4 py-2 text-sm text-gray-300 hover:text-gold-400 hover:bg-gray-900/50 transition-colors font-montserrat"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Navigation Button */}
           <button
-            className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-gray-300 hover:text-gold-400 transition-colors"
           >
-            {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
+        {/* Mobile Navigation Menu */}
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-black/95 backdrop-blur-sm"
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden py-4"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href="/features" className="block px-3 py-2 text-white hover:text-gold-400">
-                Features
-              </Link>
-              <Link href="/specs" className="block px-3 py-2 text-white hover:text-gold-400">
-                Specs
-              </Link>
-              <Link href="/gallery" className="block px-3 py-2 text-white hover:text-gold-400">
-                Gallery
-              </Link>
-              <Link href="/faq" className="block px-3 py-2 text-white hover:text-gold-400">
-                FAQ
-              </Link>
-              <button className="w-full text-center bg-gradient-to-r from-gold-500 to-gold-300 text-black px-6 py-2 rounded-full font-semibold hover:from-gold-400 hover:to-gold-200 transition-all duration-300">
-                Pre-order Now
-              </button>
+            <div className="flex flex-col space-y-4">
+              {mainLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="text-gray-300 hover:text-gold-400 transition-colors font-montserrat"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="pt-4 border-t border-gold-400/20">
+                {dropdownLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block py-2 text-gray-300 hover:text-gold-400 transition-colors font-montserrat"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
-      </div>
+      </nav>
     </header>
-  );
+  )
 }

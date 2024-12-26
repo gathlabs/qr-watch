@@ -1,17 +1,30 @@
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function Hero() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden">
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{ y, opacity }}
+      >
         <Image
-          src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?q=80&w=2000&auto=format&fit=crop"
-          alt="Luxury smartwatch background"
+          src="https://images.unsplash.com/photo-1670177257750-9b47927f68eb?q=80&w=2881&auto=format&fit=crop"
+          alt="CryptoWatch - Smart Luxury"
           fill
           className="object-cover opacity-60"
         />
-      </div>
+      </motion.div>
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -25,7 +38,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent font-playfair"
         >
-          The Future of Luxury Timepieces
+          CryptoWatch
         </motion.h1>
         
         <motion.p 
@@ -34,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl md:text-2xl text-gray-300 mb-8 font-montserrat"
         >
-          Where traditional craftsmanship meets cutting-edge technology
+          The World's First Luxury Smartwatch with Integrated QR Wallet Technology
         </motion.p>
         
         <motion.div
@@ -47,7 +60,7 @@ export default function Hero() {
             Pre-order Now
           </button>
           <button className="border-2 border-gold-400 text-gold-400 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gold-400 hover:text-black transition-all duration-300 font-montserrat">
-            Learn More
+            Explore Features
           </button>
         </motion.div>
       </motion.div>

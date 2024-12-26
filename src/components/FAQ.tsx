@@ -1,49 +1,57 @@
-import { Disclosure, Transition } from '@headlessui/react'
-import { FaChevronDown } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { Disclosure } from '@headlessui/react'
+import { FaChevronDown } from 'react-icons/fa'
 
 const faqs = [
   {
-    question: "What makes this smartwatch unique?",
-    answer: "Our smartwatch combines traditional luxury watchmaking with advanced technology, featuring premium materials, Swiss-made precision movement, and innovative features like secure crypto storage and QR authentication."
+    question: 'What makes CryptoWatch unique?',
+    answer: 'CryptoWatch combines luxury watchmaking with advanced crypto technology, featuring a built-in QR-based hardware wallet, making it the first truly secure wearable crypto storage solution.'
   },
   {
-    question: "What is the battery life?",
-    answer: "The smartwatch offers up to 7 days of battery life with normal usage. This can vary based on feature usage and settings."
+    question: 'How secure is the crypto wallet feature?',
+    answer: 'Our wallet employs military-grade encryption, secure element chip, and biometric authentication. All private keys are stored offline in the secure element, making it virtually impossible to hack.'
   },
   {
-    question: "Is it water-resistant?",
-    answer: "Yes, our smartwatch is water-resistant up to 100 meters (10 ATM), making it suitable for swimming and water sports."
+    question: 'What cryptocurrencies are supported?',
+    answer: 'CryptoWatch supports major cryptocurrencies including Bitcoin, Ethereum, and other popular tokens. Regular updates will add support for more currencies.'
   },
   {
-    question: "What materials are used?",
-    answer: "We use premium materials including surgical-grade stainless steel, sapphire crystal display, and genuine leather or premium metal straps."
+    question: 'How long does the battery last?',
+    answer: 'With normal use, CryptoWatch lasts up to 5 days on a single charge. Power reserve mode can extend this to up to 2 weeks while maintaining basic timekeeping functions.'
   },
   {
-    question: "What's included in the warranty?",
-    answer: "Our watches come with a 5-year international warranty covering manufacturing defects and mechanical issues."
+    question: 'Is CryptoWatch water resistant?',
+    answer: 'Yes, CryptoWatch is water resistant up to 100 meters (10 ATM), making it suitable for swimming and shallow diving.'
   },
   {
-    question: "How does the pre-order process work?",
-    answer: "Pre-orders can be secured with a deposit, with the balance due before shipping. Early pre-orders receive exclusive benefits and priority delivery."
+    question: 'What comes in the box?',
+    answer: 'Each CryptoWatch comes with a premium leather strap, magnetic charging dock, USB-C cable, quick start guide, and a luxury presentation box.'
+  },
+  {
+    question: 'How do I transfer crypto using CryptoWatch?',
+    answer: 'CryptoWatch uses QR code technology for secure transactions. Generate a QR code on the watch display, scan it with your phone, and confirm the transaction with biometric authentication.'
+  },
+  {
+    question: 'What is the warranty period?',
+    answer: 'CryptoWatch comes with a 2-year international warranty covering manufacturing defects. Extended warranty options are available.'
   }
 ]
 
 export default function FAQ() {
   return (
-    <section className="py-20 bg-black">
-      <div className="max-w-4xl mx-auto px-4">
+    <section id="faq" className="py-20 bg-black">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent font-playfair">
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto font-montserrat">
-            Find answers to common questions about our luxury smartwatch
+            Everything you need to know about CryptoWatch
           </p>
         </motion.div>
 
@@ -57,28 +65,21 @@ export default function FAQ() {
             >
               <Disclosure>
                 {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex justify-between w-full px-6 py-4 text-left bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200">
-                      <span className="text-white font-semibold">{faq.question}</span>
+                  <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gold-400/20">
+                    <Disclosure.Button className="flex justify-between w-full px-6 py-4 text-left">
+                      <span className="text-white font-montserrat font-semibold">
+                        {faq.question}
+                      </span>
                       <FaChevronDown
-                        className={`w-5 h-5 text-gold-400 transform transition-transform duration-200 ${
+                        className={`w-5 h-5 text-gold-400 transform transition-transform ${
                           open ? 'rotate-180' : ''
                         }`}
                       />
                     </Disclosure.Button>
-                    <Transition
-                      enter="transition duration-100 ease-out"
-                      enterFrom="transform scale-95 opacity-0"
-                      enterTo="transform scale-100 opacity-100"
-                      leave="transition duration-75 ease-out"
-                      leaveFrom="transform scale-100 opacity-100"
-                      leaveTo="transform scale-95 opacity-0"
-                    >
-                      <Disclosure.Panel className="px-6 py-4 text-gray-400 bg-gray-900/50 rounded-lg mt-2">
-                        {faq.answer}
-                      </Disclosure.Panel>
-                    </Transition>
-                  </>
+                    <Disclosure.Panel className="px-6 pb-4 text-gray-400 font-montserrat">
+                      {faq.answer}
+                    </Disclosure.Panel>
+                  </div>
                 )}
               </Disclosure>
             </motion.div>
