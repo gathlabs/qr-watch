@@ -15,8 +15,8 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'LuxWatch - Luxury Smartwatch',
-  description: 'Experience the future of luxury timepieces',
+  title: 'CryptoWatch - Crypto Wallet QR',
+  description: 'Secure and easy cryptocurrency wallet QR code generator and scanner',
 }
 
 export default function RootLayout({
