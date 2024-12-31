@@ -3,7 +3,7 @@
 import Hero from '../components/Hero'
 import Features from '../components/Features'
 import ProductShowcase from '../components/ProductShowcase'
-import Gallery from '../components/Gallery'
+// import Gallery from '../components/Gallery'
 import FAQ from '../components/FAQ'
 import Specifications from '../components/Specifications';
 
@@ -14,7 +14,7 @@ export default function Home() {
       <Features />
       <Specifications />
       <ProductShowcase />
-      <Gallery />
+      {/* <Gallery /> */}
       <FAQ />
     </main>
   )

@@ -13,7 +13,7 @@ export default function Header() {
   const mainLinks = [
     { name: 'Features', href: '/#features' },
     { name: 'Specifications', href: '/#specifications' },
-    { name: 'Gallery', href: '/#gallery' },
+    // { name: 'Gallery', href: '/#gallery' },
     { name: 'FAQ', href: '/#faq' }
   ]
 

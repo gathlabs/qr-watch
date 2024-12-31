@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion'
-
 const specifications = {
   display: {
     title: 'Display',
     specs: [
-      '1.6" OLED Display',
-      '460 x 460 resolution',
+      '1.92" OLED Display',
+      '484 x 484 resolution',
       'Always-on display',
       'Sapphire crystal glass'
     ]
