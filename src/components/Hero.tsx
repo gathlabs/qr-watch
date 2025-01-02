@@ -39,7 +39,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="space-x-4"
           >
-            <button className="bg-gradient-to-r from-gold-500 to-gold-300 text-black px-8 py-4 rounded-full text-lg font-semibold hover:from-gold-400 hover:to-gold-200 transition-all duration-300 font-montserrat">
+            <button onClick={() => window.location.href = '/payment'} className="bg-gradient-to-r from-gold-500 to-gold-300 text-black px-8 py-4 rounded-full text-lg font-semibold hover:from-gold-400 hover:to-gold-200 transition-all duration-300 font-montserrat">
               Pre-order Now
             </button>
           </motion.div>
